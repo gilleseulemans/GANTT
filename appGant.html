@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styleApp.css">
+    <script src="codeApp.js"></script>
+    <title>GANTT</title>
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 300px;
+  height: 100px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+  </style>
+
+  <script src="vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+  <link href="vis-timeline/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="topNav">
+        <center>
+            <h4>this wil be the options menu</h4>
+            <a>option 1</a>
+            <a>option 2</a>
+            <a>option 3</a>
+        </center>
+    </div>
+
+    <div class="left">
+       <!--<h4>this will be the left box</h4> --> 
+    </div>
+
+    <div class="center">
+        <!-- <div id="move"><div id="moveheader"></div></div> -->
+        
+        
+        <div id="visualization"></div>    
+        
+    </div>
+    
+    <script>
+        // create a dataset with items
+        // we specify the type of the fields `start` and `end` here to be strings
+        // containing an ISO date. The fields will be outputted as ISO dates
+        // automatically getting data from the DataSet via items.get().
+        var items = new vis.DataSet({
+          type: { start: 'ISODate', end: 'ISODate' }
+        });
+
+        const item = '<div id="content box"><table><tr><th>#####</th><th>#####</th><th>#####</th></tr><tr><td>#####</td><td>#####</td><td>#####</td></tr><tr><td>#####</td><td>#####</td><td>#####</td> </tr><tr><td>#####</td><td>#####</td><td>#####</td></tr><tr><td>#####</td><td>#####</td><td>#####</td> </tr> <tr><td>#####</td><td>#####</td><td>#####</td> </tr><tr><td>#####</td> <td>#####</td><td>#####</td></tr></table></div>';
+      
+        // add items to the DataSet
+        items.add([
+          {id: 1, content: item, start: '2014-01-23'},
+          {id: 2, content: item, start: '2014-01-18'},
+          {id: 3, content: item, start: '2014-01-21'},
+          {id: 4, content: item, start: '2014-01-19', end: '2014-01-24'},
+          {id: 5, content: item, start: '2014-01-28', type:'point'},
+          {id: 6, content: item, start: '2014-01-26'}
+        ]);
+      
+        // log changes to the console
+        items.on('*', function (event, properties) {
+          console.log(event, properties.items);
+        });
+      
+        var container = document.getElementById('visualization');
+        var options = {
+          start: '2014-01-10',
+          end: '2014-02-10',
+          height: '600px',
+      
+          // allow selecting multiple items using ctrl+click, shift+click, or hold.
+          multiselect: true,
+      
+          // allow manipulation of items
+          editable: true,
+      
+          /* alternatively, enable/disable individual actions:
+          editable: {
+            add: true,
+            updateTime: true,
+            updateGroup: true,
+            remove: true
+          },
+          */
+      
+          showCurrentTime: true
+        };
+      
+        var timeline = new vis.Timeline(container, items, options);
+      
+      </script>
+
+</body>

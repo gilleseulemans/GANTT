@@ -1,0 +1,44 @@
+.loginFormBox{
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    background-color:rgb(252, 252, 252);
+    transform: translate(-50%, -50%);
+    border: 2px solid lightgrey;
+    border-radius: 30px;
+    box-shadow: 0 0 10px  rgb(36, 36, 36);
+}
+
+h4, h3, h2{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formLogin{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);  
+    margin-bottom: auto;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: lightslategray;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+  }
+
+  input[type=text]{
+      border-radius: 50px;
+      border: 2px solid lightslategray;
+      width: 200px;
+      height: 25px;  
+      box-shadow: 0 0 5px  rgb(36, 36, 36);  
+  }
